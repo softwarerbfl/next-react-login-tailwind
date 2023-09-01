@@ -40,7 +40,7 @@ function useJoin() {
         if (len<8 || !pattern.test(password) || low==0 ||high==0){
             console.log("비밀번호는 8자리 이상 대소문자, 특수문자로 구성되어야 합니다.");
             confirmPassword.current?.focus();
-            alert("비번 실패");
+            alert("비번 유효성 검증 실패");
         }
         else{
             console.log("비밀번호 유효성 검사 완료")
@@ -48,12 +48,15 @@ function useJoin() {
 
             //  @가 없거나 양 옆에 단어가 없는 경우
             if (idx<=0 || idx>=email.length-1){
+                console.log("이메일 형식에 맞지 않습니다.");
                 confirmEmail.current?.focus();
+                alert("이메일 유효성 검증 실패");
             }
             else{
                 // 이메일 유효성까지 통과
                 console.log("이메일 유효성 검사 완료")
                 console.log("회원가입 완료")
+                alert("회원 가입에 성공하였습니다!")
             }
         }
         
